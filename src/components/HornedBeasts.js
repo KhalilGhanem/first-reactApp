@@ -17,7 +17,7 @@ class HornedBeasts extends React.Component {
     } 
   render(){
     return (
-      <div class='hornesdiv'>
+      <div className='hornesdiv'>
                 
         {/* <h2>{this.props.beastTitle}</h2>
         <img src={this.props.beastUrl} alt=""/>
