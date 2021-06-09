@@ -1,33 +1,55 @@
 import React from 'react';
 import HornedBeasts from './HornedBeasts';
 import Hdata from './data.json';
+import {Form, Button} from 'react-bootstrap/';
+
 
 class main extends React.Component {
     constructor(props){
         super(props)
-
-        // this.state={
-        //   show:false
-        // }
+        this.state={
+          numberofHornes:`0`,
+        }
     }
-    // handleShow=()=>{
-    //     this.setState({
-    //         show:true
-    //     })
-        
-    // }
-    // handleClose=()=>{
-    //       this.setState({
-    //           show:false
-    //       })
-    //   }
+
+  //  submitForm= (event)=>{
+  //   event.preventDefault();
+
+  //  }
+   updateHornes = (event) => {
+    this.setState({
+      numberofHornes: event.target.value
+    })
+  }
+
+    loga= ()=>{
+      return console.log(this.state.numberofHornes);
+    }
+
    
   render(){
       
     return (
       <main>
+      
+        <section>
+        <Form > 
+        <Form.Group controlId="exampleForm.SelectCustomHtmlSize">
+                        <Form.Label>How many Horns </Form.Label>
+                        <Form.Control as="select" custom name='hornsnumber' onChange={this.updateHornes}>
+                            <option value='0'>All</option>
+                            <option value='1'>One</option>
+                            <option value='2'>Two</option>
+                            <option value='3'>Three</option>
+                            <option value='100'>Wow</option>
+                        </Form.Control>
+                    </Form.Group>
+         </Form>
+         <p>{this.state.numberofHornes}any</p>
+         </section>
         
           {Hdata.map((item)=>{
+            if(this.state.numberofHornes==0){
               return(
                   
                   <div className="topdiv" >
@@ -41,12 +63,46 @@ class main extends React.Component {
                   </div>
                  
               )
-          })}
+            }else if(item.horns==this.state.numberofHornes && this.state.numberofHornes ==1){
+              return(
+                <HornedBeasts
+                         beastTitle={item.title}
+                         beastUrl={item.image_url}
+                         beastDescription={item.description}
+                      />
+              )
+            }else if(item.horns==this.state.numberofHornes && this.state.numberofHornes ==2){
+              return(
+                <HornedBeasts
+                         beastTitle={item.title}
+                         beastUrl={item.image_url}
+                         beastDescription={item.description}
+                      />
+              )
+            }else if(item.horns==this.state.numberofHornes && this.state.numberofHornes ==3){
+              return(
+                <HornedBeasts
+                         beastTitle={item.title}
+                         beastUrl={item.image_url}
+                         beastDescription={item.description}
+                      />
+              )
+            }else if(item.horns==this.state.numberofHornes && this.state.numberofHornes ==100){
+              return(
+                <HornedBeasts
+                         beastTitle={item.title}
+                         beastUrl={item.image_url}
+                         beastDescription={item.description}
+                      />
+              )
+            }
 
-        {/* <HornedBeasts beastTitle={'UniWhal'}  beastUrl={'http://3.bp.blogspot.com/_DBYF1AdFaHw/TE-f0cDQ24I/AAAAAAAACZg/l-FdTZ6M7z8/s1600/Unicorn_and_Narwhal_by_dinglehopper.jpg'} beastDescription={'A unicorn and a narwhal nuzzling their horns'}/>
-        <HornedBeasts beastTitle={'Rhino Family'}  beastUrl={'https://images.unsplash.com/photo-1512636618879-bbe79107e9e3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bd9460ee6d1ddbb6b1ca7be86dfc4590&auto=format&fit=crop&w=1825&q=80'} beastDescription={'Mother (or father) rhino with two babies'}/>
-        <HornedBeasts beastTitle={'UniWhal'}  beastUrl={'https://www.dhresource.com/0x0s/f2-albu-g5-M00-1A-11-rBVaI1hsIIiALxKzAAIHjSU3VkE490.jpg/wholesale-halloween-costume-prop-unicorn.jpg'} beastDescription={'Someone wearing a creepy unicorn head mask'}/>
-   */}
+
+          })
+          
+          
+          }
+
       </main>
     );
 
