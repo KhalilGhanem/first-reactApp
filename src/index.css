@@ -12,6 +12,12 @@ body {
 div{
   display: inline-block;
 }
+.modaldiv img {
+  width: 100%;
+}
+ Modal div {
+  width: fit-content;
+}
 /* .hornesdiv {
   border: 1px solid black; 
   width: fit-content;

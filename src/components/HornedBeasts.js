@@ -2,27 +2,42 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import SelectedBeast from './SelectedBeast ';
+
 
 class HornedBeasts extends React.Component {
   constructor(props){
       super(props);
       this.state = {
-          numbofPets :0
+          numbofPets :0,
+          show:false,
       }
-     }
+    }
+     
+      handleShow=()=>{
+        this.setState({
+            show:true
+        })
+        
+    }
+    handleClose=()=>{
+          this.setState({
+              show:false
+          })
+      }
+     
     incrementNumOfPets= () =>{
         this.setState({
             numbofPets: this.state.numbofPets+1
         })
+      
     } 
   render(){
     return (
-      <div class='hornesdiv'>
+      <div className='hornesdiv'>
                 
-        {/* <h2>{this.props.beastTitle}</h2>
-        <img src={this.props.beastUrl} alt=""/>
-        <p>{this.props.beastDescription }</p> */}
-        <Card style={{ width: '18rem' }}>
+        
+        <Card style={{ width: '18rem' }} onClick={this.handleShow}>
         <Card.Img variant="top" onClick={this.incrementNumOfPets} src={this.props.beastUrl} alt={this.props.alt}  />
         < Card.Body>
             <Card.Title>{this.props.beastTitle}</Card.Title>
@@ -36,7 +51,13 @@ class HornedBeasts extends React.Component {
             <Button variant="primary">Go somewhere</Button>
         </Card.Body>
         </Card>
-                
+        <SelectedBeast 
+                        beastTitle={this.props.beastTitle}
+                        beastUrl={this.props.beastUrl}
+                        beastDescription={this.props.beastDescription}
+                        handleClose={this.handleClose}
+                        show={this.state.show}
+                      />
       </div>
     );
 

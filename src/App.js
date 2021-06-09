@@ -6,11 +6,11 @@ import Main from './components/main';
 class App extends React.Component {
   render() {
     return (
-      <body>
+      <div>
         <Header />
         <Main />
         <Footer />
-      </body>
+      </div>
     );
   }
 }
