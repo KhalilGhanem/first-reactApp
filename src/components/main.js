@@ -1,22 +1,26 @@
 import React from 'react';
 import HornedBeasts from './HornedBeasts';
 import Hdata from './data.json';
-import SelectedBeast from './SelectedBeast ';
 
 class main extends React.Component {
     constructor(props){
         super(props)
-        this.state={
-            view:`false`,
-            
-        }
+
+        // this.state={
+        //   show:false
+        // }
     }
-    handleShow=()=>{
-        this.setState({
-            view:`true`
-        })
+    // handleShow=()=>{
+    //     this.setState({
+    //         show:true
+    //     })
         
-    }
+    // }
+    // handleClose=()=>{
+    //       this.setState({
+    //           show:false
+    //       })
+    //   }
    
   render(){
       
@@ -26,21 +30,13 @@ class main extends React.Component {
           {Hdata.map((item)=>{
               return(
                   
-                  <div className="topdiv" onClick={this.handleShow}>
-                      <p> test = {this.state.view} </p>
-                      
-                      <SelectedBeast 
-                        beastTitle={item.title}
-                        beastUrl={item.image_url}
-                        beastDescription={item.description}
-                      />
+                  <div className="topdiv" >
+
                       <HornedBeasts
                          beastTitle={item.title}
                          beastUrl={item.image_url}
                          beastDescription={item.description}
-                         divClick={this.handleShow}
-                         issown={this.state.view}
-
+                        //  handleShow={this.handleShow}
                       />
                   </div>
                  
